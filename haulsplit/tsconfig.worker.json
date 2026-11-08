@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "tsBuildInfoFile": "./node_modules/.tmp/worker.tsbuildinfo",
+    "target": "ES2022",
+    "lib": ["ES2023"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "types": ["@cloudflare/workers-types", "node"],
+    "emitDeclarationOnly": true,
+    "outDir": "./node_modules/.tmp/worker"
+  },
+  "include": ["worker", "shared", "tests"]
+}

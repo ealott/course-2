@@ -1,0 +1,38 @@
+{
+  "name": "haulsplit",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node -e \"require('fs').mkdirSync('dist',{recursive:true})\" && concurrently -k -n api,web \"wrangler dev --port 8787\" \"vite\"",
+    "build": "tsc -b && vite build",
+    "preview": "npm run build && wrangler dev --port 8787",
+    "db:migrate:local": "wrangler d1 migrations apply haulsplit --local",
+    "db:migrate:remote": "wrangler d1 migrations apply haulsplit --remote",
+    "deploy": "npm run build && wrangler d1 migrations apply haulsplit --remote && wrangler deploy",
+    "test": "vitest run",
+    "typecheck": "tsc -b --noEmit"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.6.0",
+    "barcode-detector": "^3.2.3",
+    "hono": "^4.13.17",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-router-dom": "^7.18.5",
+    "zod": "^4.6.7",
+    "zxing-wasm": "^3.1.6"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261107.1",
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.2.1",
+    "concurrently": "^10.0.7",
+    "typescript": "^5.9.3",
+    "vite": "^8.3.6",
+    "vitest": "^5.1.0",
+    "wrangler": "^4.158.0"
+  }
+}
